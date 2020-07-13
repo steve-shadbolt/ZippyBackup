@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4873CEF2-C44F-4503-9B47-3531786D65E0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ZippyBackup</RootNamespace>
+    <AssemblyName>ZippyBackup</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationIcon>Resources\ZippyBackup.ico</ApplicationIcon>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Builds\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Builds\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AlphaFS, Version=1.5.0.0, Culture=neutral, PublicKeyToken=4b76c8c88cc75802, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>AlphaFS-2.1.2.0\Lib\Net35\AlphaFS.dll</HintPath>
+    </Reference>
+    <Reference Include="AlphaVSS.51.x86, Version=1.1.4000.3, Culture=neutral, PublicKeyToken=959d3993561034e3, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>AlphaVSS-1.1.4000.3\Bin\Release\AlphaVSS.51.x86.dll</HintPath>
+    </Reference>
+    <Reference Include="AlphaVSS.52.x86, Version=1.1.4000.3, Culture=neutral, PublicKeyToken=959d3993561034e3, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>AlphaVSS-1.1.4000.3\Bin\Release\AlphaVSS.52.x86.dll</HintPath>
+    </Reference>
+    <Reference Include="AlphaVSS.60.x86, Version=1.1.4000.3, Culture=neutral, PublicKeyToken=959d3993561034e3, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>AlphaVSS-1.1.4000.3\Bin\Release\AlphaVSS.60.x86.dll</HintPath>
+    </Reference>
+    <Reference Include="AlphaVSS.Common, Version=1.1.4000.3, Culture=neutral, PublicKeyToken=959d3993561034e3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>AlphaVSS-1.1.4000.3\Bin\Release\AlphaVSS.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutoUpdate.cs" />
+    <Compile Include="BackupSchedule.cs" />
+    <Compile Include="Processing\BackupSearch.cs" />
+    <Compile Include="Infrastructure\ArchiveFilename.cs" />
+    <Compile Include="Processing\VerificationRun.cs" />
+    <Compile Include="Processing\ExtractionRun.cs" />
+    <Compile Include="Processing\SyncRun.cs" />
+    <Compile Include="StoredNetworkCredentials.cs" />
+    <Compile Include="User Interface\ExcludedFilesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\ExcludedFilesForm.Designer.cs">
+      <DependentUpon>ExcludedFilesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\EMailSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\EMailSettingsForm.Designer.cs">
+      <DependentUpon>EMailSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\ListBoxWithIcons.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RunRegistry.cs" />
+    <Compile Include="User Interface\ArchiveExplorerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\ArchiveExplorerForm.Designer.cs">
+      <DependentUpon>ArchiveExplorerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\BuildVersion.cs" />
+    <Compile Include="User Interface\OverwritePromptForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\OverwritePromptForm.Designer.cs">
+      <DependentUpon>OverwritePromptForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\ProgressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\ProgressForm.Designer.cs">
+      <DependentUpon>ProgressForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\BackupProject.cs" />
+    <Compile Include="User Interface\BackupProjectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\BackupProjectForm.Designer.cs">
+      <DependentUpon>BackupProjectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Processing\BackupRun.cs" />
+    <Compile Include="User Interface\FilePatternsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\FilePatternsForm.Designer.cs">
+      <DependentUpon>FilePatternsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\GlobalSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\GlobalSettingsForm.Designer.cs">
+      <DependentUpon>GlobalSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Manifest.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="User Interface\ArchiveExplorerForm.resx">
+      <DependentUpon>ArchiveExplorerForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\ExcludedFilesForm.resx">
+      <DependentUpon>ExcludedFilesForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\ProgressForm.resx">
+      <DependentUpon>ProgressForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\BackupProjectForm.resx">
+      <DependentUpon>BackupProjectForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\FilePatternsForm.resx">
+      <DependentUpon>FilePatternsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\GlobalSettingsForm.resx">
+      <DependentUpon>GlobalSettingsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\PasswordForm.resx">
+      <DependentUpon>PasswordForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\TextForm.resx">
+      <DependentUpon>TextForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\TreeSelectForm.resx">
+      <DependentUpon>TreeSelectForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="User Interface\PasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\PasswordForm.Designer.cs">
+      <DependentUpon>PasswordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\RestoreForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\RestoreForm.Designer.cs">
+      <DependentUpon>RestoreForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\SortedListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="User Interface\SplashForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\SplashForm.Designer.cs">
+      <DependentUpon>SplashForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\TextForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\TextForm.Designer.cs">
+      <DependentUpon>TextForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interface\TreeSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\TreeSelectForm.Designer.cs">
+      <DependentUpon>TreeSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\CRC32.cs" />
+    <Compile Include="Utility\Diagnostics.cs" />
+    <Compile Include="Utility\FileLockInfo.cs" />
+    <Compile Include="Utility\IO.cs" />
+    <Compile Include="Utility\NativeDirectoryInfo.cs" />
+    <Compile Include="Utility\PromptForCredentials.cs" />
+    <Compile Include="Utility\RingBuffer.cs" />
+    <Compile Include="Utility\StringEncryption.cs" />
+    <Compile Include="Utility\Utility.cs" />
+    <Compile Include="Utility\Impersonator.cs" />
+    <Compile Include="User Interface\ZippyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Interface\ZippyForm.Designer.cs">
+      <DependentUpon>ZippyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VssFile.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folder.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ZippyBackup.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\License.bzip2.txt" />
+    <EmbeddedResource Include="Resources\License.DotNetZip.txt" />
+    <EmbeddedResource Include="Resources\License.zlib.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\License.ZippyBackup.txt" />
+    <EmbeddedResource Include="User Interface\SplashForm.resx">
+      <DependentUpon>SplashForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonRun.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonRunAll.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonRunFull.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Splash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AlertMark.bmp" />
+    <EmbeddedResource Include="Resources\OkCheck.bmp" />
+    <EmbeddedResource Include="Resources\QuestionMark.bmp" />
+    <EmbeddedResource Include="Resources\WarnMark.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\FolderIcon.png" />
+    <EmbeddedResource Include="Resources\FolderIconWithStar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\GreenStar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\WhiteBox.png" />
+    <EmbeddedResource Include="User Interface\EMailSettingsForm.resx">
+      <DependentUpon>EMailSettingsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\OverwritePromptForm.resx">
+      <DependentUpon>OverwritePromptForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interface\RestoreForm.resx">
+      <DependentUpon>RestoreForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\License.AlphaFS.txt" />
+    <EmbeddedResource Include="Resources\License.AlphaVSS.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ToDo_List.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="DotNetZip\Source\Zip\Zip DLL.csproj">
+      <Project>{d3b0ad67-44d8-4b3d-bed9-ce1fd6de2c5a}</Project>
+      <Name>Zip DLL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>"$(TargetDir)MakeTimestamp.exe" "$(TargetDir)"</PostBuildEvent>
+    <PreBuildEvent>"$(TargetDir)MakeTimestamp.exe" "$(TargetDir)"</PreBuildEvent>
+  </PropertyGroup>
+</Project>

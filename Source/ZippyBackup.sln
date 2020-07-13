@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZippyBackup", "ZippyBackup.csproj", "{4873CEF2-C44F-4503-9B47-3531786D65E0}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ZippyBackup Setup", "Setup\Setup.vdproj", "{501B8A28-E1EC-4665-8BFE-8B73B0820AB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Updater", "Updater\Updater.csproj", "{5330B6F5-439C-4EBF-AAC0-5E514173336A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakeTimestamp", "MakeTimestamp\MakeTimestamp.csproj", "{F042771F-6010-4EBF-A8B5-CF78C7AA2790}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZippyRestore", "ZippyRestore\ZippyRestore.csproj", "{24441B17-4BFC-4A55-9325-FB1AC4F9AB8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zip DLL", "DotNetZip\Source\Zip\Zip DLL.csproj", "{D3B0AD67-44D8-4B3D-BED9-CE1FD6DE2C5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZippySync", "ZippySync\ZippySync.csproj", "{5372CC13-AE20-491C-BC90-C8D93FBC6641}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4873CEF2-C44F-4503-9B47-3531786D65E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4873CEF2-C44F-4503-9B47-3531786D65E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4873CEF2-C44F-4503-9B47-3531786D65E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4873CEF2-C44F-4503-9B47-3531786D65E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{501B8A28-E1EC-4665-8BFE-8B73B0820AB3}.Debug|Any CPU.ActiveCfg = Debug
+		{501B8A28-E1EC-4665-8BFE-8B73B0820AB3}.Debug|Any CPU.Build.0 = Debug
+		{501B8A28-E1EC-4665-8BFE-8B73B0820AB3}.Release|Any CPU.ActiveCfg = Release
+		{501B8A28-E1EC-4665-8BFE-8B73B0820AB3}.Release|Any CPU.Build.0 = Release
+		{5330B6F5-439C-4EBF-AAC0-5E514173336A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5330B6F5-439C-4EBF-AAC0-5E514173336A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5330B6F5-439C-4EBF-AAC0-5E514173336A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5330B6F5-439C-4EBF-AAC0-5E514173336A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F042771F-6010-4EBF-A8B5-CF78C7AA2790}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F042771F-6010-4EBF-A8B5-CF78C7AA2790}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F042771F-6010-4EBF-A8B5-CF78C7AA2790}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F042771F-6010-4EBF-A8B5-CF78C7AA2790}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24441B17-4BFC-4A55-9325-FB1AC4F9AB8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24441B17-4BFC-4A55-9325-FB1AC4F9AB8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24441B17-4BFC-4A55-9325-FB1AC4F9AB8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24441B17-4BFC-4A55-9325-FB1AC4F9AB8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3B0AD67-44D8-4B3D-BED9-CE1FD6DE2C5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3B0AD67-44D8-4B3D-BED9-CE1FD6DE2C5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3B0AD67-44D8-4B3D-BED9-CE1FD6DE2C5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3B0AD67-44D8-4B3D-BED9-CE1FD6DE2C5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5372CC13-AE20-491C-BC90-C8D93FBC6641}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5372CC13-AE20-491C-BC90-C8D93FBC6641}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5372CC13-AE20-491C-BC90-C8D93FBC6641}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5372CC13-AE20-491C-BC90-C8D93FBC6641}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

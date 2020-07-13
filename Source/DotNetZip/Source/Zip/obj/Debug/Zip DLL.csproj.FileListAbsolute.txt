@@ -1,0 +1,20 @@
+C:\Users\wblack\Google Drive\Code\C#\Applications\ZippyBackup\Source\DotNetZip\Source\Zip\obj\Debug\Zip DLL.csproj.GenerateResource.Cache
+C:\Users\wblack\Google Drive\Code\C#\Applications\ZippyBackup\Source\DotNetZip\Source\Zip\bin\Debug\Ionic.Zip.xml
+C:\Users\wblack\Google Drive\Code\C#\Applications\ZippyBackup\Source\DotNetZip\Source\Zip\bin\Debug\Ionic.Zip.dll
+C:\Users\wblack\Google Drive\Code\C#\Applications\ZippyBackup\Source\DotNetZip\Source\Zip\bin\Debug\Ionic.Zip.pdb
+C:\Users\wblack\Google Drive\Code\C#\Applications\ZippyBackup\Source\DotNetZip\Source\Zip\obj\Debug\Ionic.Zip.Forms.PasswordDialog.resources
+C:\Users\wblack\Google Drive\Code\C#\Applications\ZippyBackup\Source\DotNetZip\Source\Zip\obj\Debug\Ionic.Zip.WinFormsSelfExtractorStub.resources
+C:\Users\wblack\Google Drive\Code\C#\Applications\ZippyBackup\Source\DotNetZip\Source\Zip\obj\Debug\Ionic.Zip.Forms.ZipContentsDialog.resources
+C:\Users\wblack\Google Drive\Code\C#\Applications\ZippyBackup\Source\DotNetZip\Source\Zip\obj\Debug\Ionic.Zip.dll
+C:\Users\wblack\Google Drive\Code\C#\Applications\ZippyBackup\Source\DotNetZip\Source\Zip\obj\Debug\Ionic.Zip.pdb
+C:\Users\wblack\Google Drive\Code\C#\Applications\ZippyBackup\Source\DotNetZip\Source\Zip\obj\Debug\Zip DLL.csprojResolveAssemblyReference.cache
+C:\Users\Wiley\Google Drive\Code\C#\Applications\ZippyBackup\Source\DotNetZip\Source\Zip\bin\Debug\Ionic.Zip.xml
+C:\Users\Wiley\Google Drive\Code\C#\Applications\ZippyBackup\Source\DotNetZip\Source\Zip\bin\Debug\Ionic.Zip.dll
+C:\Users\Wiley\Google Drive\Code\C#\Applications\ZippyBackup\Source\DotNetZip\Source\Zip\bin\Debug\Ionic.Zip.pdb
+C:\Users\Wiley\Google Drive\Code\C#\Applications\ZippyBackup\Source\DotNetZip\Source\Zip\obj\Debug\Ionic.Zip.Forms.PasswordDialog.resources
+C:\Users\Wiley\Google Drive\Code\C#\Applications\ZippyBackup\Source\DotNetZip\Source\Zip\obj\Debug\Ionic.Zip.WinFormsSelfExtractorStub.resources
+C:\Users\Wiley\Google Drive\Code\C#\Applications\ZippyBackup\Source\DotNetZip\Source\Zip\obj\Debug\Ionic.Zip.Forms.ZipContentsDialog.resources
+C:\Users\Wiley\Google Drive\Code\C#\Applications\ZippyBackup\Source\DotNetZip\Source\Zip\obj\Debug\Zip DLL.csproj.GenerateResource.Cache
+C:\Users\Wiley\Google Drive\Code\C#\Applications\ZippyBackup\Source\DotNetZip\Source\Zip\obj\Debug\Ionic.Zip.dll
+C:\Users\Wiley\Google Drive\Code\C#\Applications\ZippyBackup\Source\DotNetZip\Source\Zip\obj\Debug\Ionic.Zip.pdb
+C:\Users\Wiley\Google Drive\Code\C#\Applications\ZippyBackup\Source\DotNetZip\Source\Zip\obj\Debug\Zip DLL.csprojResolveAssemblyReference.cache

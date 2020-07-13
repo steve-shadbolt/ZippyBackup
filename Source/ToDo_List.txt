@@ -1,0 +1,54 @@
+﻿TODO list and possible improvements:
+ * Validation currently detects failed archives or the inability to extract a file from within an archive, but it does not provide a remedy.  The GUI should provide options for the user to begin the repair process.
+ * Ability to distinguish automated backups and verifications from user-initiated ones.
+ * For automated backups, provide an automatic "continuation" function after a certain time period.  Recheck whether the PC is still idle before continuing.
+ * For very large directory structures, apply continuation to the scan as well as the archiving process.
+
+/** TODO List:
+ *  - The nag functionality that tells a user that they haven't backed up one of their projects
+ *      for at least N days ignores offline projects.  We should, additionally, keep track of
+ *      the last time we had a connection to a backup project and if a project remains offline
+ *      for more than N days we should give a similar nag.
+ *  - If the user changes passwords, then searches become tricky.  Although we let a user type
+ *      in a password anytime one is needed, multiple password changes can become nasty over
+ *      a long backup history.  Solution:  When the user changes password, ask them if they
+ *      would like to convert old backups to utilize the new password.
+ *  - User's passwords are stored in the registry.  This is a security vulnerability
+ *      to malware which makes it to the user's computer.  Since the zip utilities require 
+ *      a password and not a hash, no way around this at the moment but to dig further into
+ *      the underlying zip utilities or use our own custom archive format (coming someday). 
+ *      * Slight Improvement - they are at least encrypted in the registry now.
+ *      * The same applies to the user's network credentials - except that perhaps we can
+ *          utilize some Windows security features for these instead of storing the password
+ *          under our registry key.
+ *  - We are almost entirely setup to prompt and store network credentials to access the source
+ *      directory of a backup project in the same way we do for a backup destination.  The
+ *      using() statements are in place everywhere except the zip.Save() statement in BackupRun.
+ *      This is the crux...because at this point we also need to be impersonating the backup
+ *      target.  I don't think we can use the current Impersonate class to impersonate them
+ *      both at once, and DotNetZip will read/write as it goes.  
+ *      *   One solution would be to create a custom Stream object which is provided for every
+ *          file we are archiving into the zip.  The custom Stream object is an 'on-demand'
+ *          stream that reads a large portion of the underlying FileStream from disk/network
+ *          (say 25MB) and buffers it in memory.  The on-demand stream performs source 
+ *          impersonation only during the time when it is actually reading from the underlying 
+ *          FileStram.
+ *      *   Before doing this, I should test whether there is a way to access two network
+ *          credentials at once.  This would provide the best performance.
+ *      *   Once figured out, also uncomment the code in BackupProjectForm.cs that allows
+ *          detection of needed source credentials and prompts the user for them.
+ *  - Have code for BackupCredentials in place, but have not witnessed them successfully
+ *      working to get to the server.
+ *      -> Now I understand that the proper technique would be for the user to go to
+ *          Windows Credential Manager and permanently provide access to your destination
+ *          folder.  Should disable the credentials within ZippyBackup and provide instructions
+ *          instead.
+ *  - RunFolder() Action C3 skips over any files named 'Manifest.xml' in an archive's root.  
+ *      However, software developers sometimes have actual files by that name.  Since we only
+ *      check the archive's root, the conflict probability is low, but we should rename
+ *      Manifest.xml to "Archive_Manifest.xml" to reduce conflicts.  That involves
+ *      work to ensure backwards compatability.
+ *  - RunFolder() Action C3 should generate a warning if it fires.  In fact, a mechanism to
+ *      store up warnings during a backup run would be useful in general.  The warnings could
+ *      be logged or displayed after the backup run completes.
+ */
