@@ -1,0 +1,44 @@
+ZippyBackup
+	Copyright (C) 2012-2014 by Wiley Black
+	Licensed under the Microsoft Public License (MS-PL).
+	Donations to the Boys and Girls Clubs of America are encouraged.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
+	EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
+	MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
+	IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY 
+	CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
+	TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
+	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+DotNetZip
+	Licensed under the Microsoft Public License (MS-PL).
+	Donations to the Boys and Girls Clubs of America are encouraged.
+
+	jzlib
+		Copyright (c) 2000,2001,2002,2003 ymnk, JCraft,Inc. All rights reserved.
+		See license details under DotNetZip folder.
+		Based on zlib.
+
+	ZLib
+		Copyright (C) 1995-2004 Jean-loup Gailly and Mark Adler
+		See license details under DotNetZip folder.
+
+	BZip2
+		The managed BZIP2 code included in Ionic.BZip2.dll and Ionic.Zip.dll is
+		modified code, based on the bzip2 code in the Apache commons compress
+		library.
+
+		The original BZip2 was created by Julian Seward, and is licensed under
+		the BSD license.
+
+	See licensing notes in DotNetZip folder.
+
+AlphaFS-1.5
+	The MIT License (MIT)
+	Copyright (c) 2008-2014 Peter Palotas, Alexandr Normuradov, Jeffrey Jangli
+
+AlphaVSS-1.1.4000.3
+	The MIT License (MIT)
+	Copyright (c) 2008-2014 Peter Palotas
+	

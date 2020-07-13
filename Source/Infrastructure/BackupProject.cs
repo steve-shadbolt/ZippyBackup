@@ -322,6 +322,7 @@ namespace ZippyBackup
 
                 LoadIssue = false;
             }
+            catch (System.Security.Authentication.InvalidCredentialException) { LoadIssue = true; }
             catch (IOException) { LoadIssue = true; }
         }
 

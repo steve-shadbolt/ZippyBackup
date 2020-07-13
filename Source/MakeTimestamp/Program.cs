@@ -35,6 +35,7 @@ namespace MakeTimestamp
 
         static int Main(string[] args)
         {
+//args = new string[] { "C:\Code\C#\Applications\ZippyBackup.git\Source\Builds\MakeTimestamp.exe", "C:\\Code\\C#\\Applications\\ZippyBackup.git\\Builds\\Release\\" };
             try
             {                
                 string TargetFolder = null;

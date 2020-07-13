@@ -38,7 +38,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>Builds\Debug\</OutputPath>
+    <OutputPath>..\Builds\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -46,7 +46,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>Builds\Release\</OutputPath>
+    <OutputPath>..\Builds\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -385,7 +385,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>"$(TargetDir)MakeTimestamp.exe" "$(TargetDir)"</PostBuildEvent>
-    <PreBuildEvent>"$(TargetDir)MakeTimestamp.exe" "$(TargetDir)"</PreBuildEvent>
+    <PostBuildEvent>"$(SolutionDir)Builds\$(ConfigurationName)\MakeTimestamp.exe" "$(TargetDir)"</PostBuildEvent>
+    <PreBuildEvent>"$(SolutionDir)Builds\$(ConfigurationName)\MakeTimestamp.exe" "$(TargetDir)"</PreBuildEvent>
   </PropertyGroup>
 </Project>
