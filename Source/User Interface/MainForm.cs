@@ -528,7 +528,7 @@ namespace ZippyBackup.User_Interface
                     case FolderStatus.Offline: ss = Project.Name + " is offline."; break;
                     case FolderStatus.MissingSource: ss = Project.Name + " - source directory not found."; break;
                     case FolderStatus.MissingBackup: ss = Project.Name + " - backup directory not found."; break;
-                    default: ss = Project.Name = Project.Name + " - unable to determine status."; break;
+                    default: ss = Project.Name + " - unable to determine status."; break;
                 }
 
                 if (Stat == FolderStatus.Online || Stat == FolderStatus.Offline)
