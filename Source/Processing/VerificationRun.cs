@@ -292,6 +292,18 @@ namespace ZippyBackup
                                     }
                                 }
                             }
+                            catch (FileNotFoundException fe)
+                            {
+                                StringBuilder Msg = new StringBuilder();
+                                Msg.Append("Unable to locate file(s) in archive '" + Archive.ToString() + "'.  Do you want to delete this archive so that it will be reconstructed on your next backup?\n\nThe error was: " + fe.Message);
+                                switch (MessageBox.Show(Msg.ToString(), "Error", MessageBoxButtons.YesNoCancel))
+                                {
+                                    case DialogResult.Yes: File.Delete(Project.CompleteBackupFolder + "\\" + Archive.ToString()); break;
+                                    case DialogResult.No: break;
+                                    case DialogResult.Cancel: throw new CancelException();
+                                    default: throw new NotSupportedException();
+                                }
+                            }
                             catch (Ionic.Zip.ZipException ze)
                             {
                                 StringBuilder Msg = new StringBuilder();
@@ -429,6 +441,7 @@ namespace ZippyBackup
             catch (CancelException ce) { throw ce; }
             catch (Ionic.Zip.ZipException ze) { throw ze; }
             catch (Ionic.Zlib.ZlibException ze) { throw ze; }
+            catch (FileNotFoundException fe) { throw fe; }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message + "\nWhile verifying file '" + File.RelativePath + "' by trial extraction.", ex);
@@ -455,6 +468,7 @@ namespace ZippyBackup
                     {
                         string PathInArchive = FileM.PathInArchive.Replace('\\', '/').Replace('’', '\'');
                         ze = zip[PathInArchive];
+                        if (ze == null) throw new FileNotFoundException();
                     }
                     catch (CancelException ce) { throw ce; }
                     catch (Exception ex)
@@ -510,6 +524,7 @@ namespace ZippyBackup
                 catch (CancelException ce) { throw ce; }
                 catch (Ionic.Zip.ZipException ze) { throw ze; }
                 catch (Ionic.Zlib.ZlibException ze) { throw ze; }
+                catch (FileNotFoundException fe) { throw fe; }
                 catch (Exception ex)
                 {
 #                   if DEBUG
