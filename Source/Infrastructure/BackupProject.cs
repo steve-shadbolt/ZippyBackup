@@ -269,7 +269,7 @@ namespace ZippyBackup
                 ArchiveFilename MostRecent;
                 lock (ArchiveFileList)
                 {
-                    using (Impersonator newself = new Impersonator(BackupCredentials))
+                    using (NetworkConnection newself = new NetworkConnection(CompleteBackupFolder, BackupCredentials))
                         ArchiveFileList.LoadAll(this);
 
                     // Locate most recent backup...
@@ -282,7 +282,7 @@ namespace ZippyBackup
                     try
                     {
                         Manifest Manifest;
-                        using (Impersonator newself = new Impersonator(BackupCredentials))
+                        using (NetworkConnection newself = new NetworkConnection(CompleteBackupFolder, BackupCredentials))
                             Manifest = MostRecent.LoadArchiveManifest(this, PromptForPassword);
                         MostRecentBackup = Manifest.BackupStartTime;
                     }
@@ -334,7 +334,7 @@ namespace ZippyBackup
         public void OnNewBackup()
         {
             lock (ArchiveFileList)
-                using (Impersonator newself = new Impersonator(BackupCredentials))
+                using (NetworkConnection newself = new NetworkConnection(CompleteBackupFolder, BackupCredentials))
                     ArchiveFileList.LoadAll(this);
         }
 

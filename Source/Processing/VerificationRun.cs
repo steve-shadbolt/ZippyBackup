@@ -182,7 +182,7 @@ namespace ZippyBackup
                     Manifest LatestManifest;
                     try
                     {
-                        using (Impersonator newself = new Impersonator(Project.BackupCredentials))
+                        using (NetworkConnection newself = new NetworkConnection(Project.CompleteBackupFolder, Project.BackupCredentials))
                         {
                             // Locate latest backup (either complete or incremental.)
                             lock (Project.ArchiveFileList) LatestBackup = Project.ArchiveFileList.FindMostRecent();

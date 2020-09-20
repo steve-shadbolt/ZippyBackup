@@ -1,5 +1,5 @@
 using System;
 
 namespace ZippyBackup.User_Interface {
-	public class BuildVersion { public static DateTime Version = DateTime.Parse("2020-07-26T17:27:51.1602571Z"); }
+	public class BuildVersion { public static DateTime Version = DateTime.Parse("2020-09-20T23:13:49.1586046Z"); }
 }

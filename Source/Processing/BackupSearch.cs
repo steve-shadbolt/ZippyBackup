@@ -314,7 +314,7 @@ namespace ZippyBackup
                                 {
                                     try
                                     {
-                                        using (Impersonator newself = new Impersonator(Project.BackupCredentials))
+                                        using (NetworkConnection newconn = new NetworkConnection(Project.CompleteBackupFolder, Project.BackupCredentials))
                                             Manifest = ExamineNext.LoadArchiveManifest(Project, false);
                                         Project.ManifestCache.Add(ExamineNext, Manifest);
                                     }

@@ -140,13 +140,10 @@ namespace ZippyBackup.User_Interface
                     
                     try
                     {
-                        if (m_Project.SourceCredentials.Provided)
-                            using (Impersonator newself = new Impersonator(m_Project.SourceCredentials))
-                            {
-                                NativeDirectoryInfo.CheckAccessToDirectory(tbSrcFolder.Text);
-                            }
-                        else
+                        using (NetworkConnection newconn = new NetworkConnection(tbSrcFolder.Text, m_Project.SourceCredentials))
+                        {
                             NativeDirectoryInfo.CheckAccessToDirectory(tbSrcFolder.Text);
+                        }
                     }
                     catch (DirectoryNotFoundException)
                     {
@@ -165,14 +162,11 @@ namespace ZippyBackup.User_Interface
                     }
 
                     try
-                    {
-                        if (m_Project.BackupCredentials.Provided)
-                            using (Impersonator newself = new Impersonator(m_Project.BackupCredentials))
-                            {
-                                NativeDirectoryInfo.CheckAccessToDirectory(tbBackupFolder.Text);
-                            }
-                        else
+                    {                        
+                        using (NetworkConnection newself = new NetworkConnection(tbBackupFolder.Text, m_Project.BackupCredentials))
+                        {
                             NativeDirectoryInfo.CheckAccessToDirectory(tbBackupFolder.Text);
+                        }                        
                     }
                     catch (DirectoryNotFoundException)
                     {
@@ -395,6 +389,8 @@ namespace ZippyBackup.User_Interface
         public BackupProjectForm()
         {
             InitializeComponent();
+
+ZippyForm.LogWriteLine(LogLevel.HeavyDebug, "BackupProjectForm initialized.");
         }
 
         private void btnBrowseSrc_Click(object sender, EventArgs e)
@@ -431,7 +427,7 @@ namespace ZippyBackup.User_Interface
         }
 
         /// <summary>
-        /// Precondition:  Should be enclosed in a using (Impersonator ...) block for access to
+        /// Precondition:  Should be enclosed in a using (NetworkConnection ...) block for access to
         /// the path.
         /// </summary>        
         /// <param name="BasePath"></param>
@@ -573,7 +569,7 @@ namespace ZippyBackup.User_Interface
                 DoEvents();
 
                 TreeSelectForm tsf = new TreeSelectForm();
-                using (Impersonator newself = new Impersonator(m_Project.SourceCredentials))
+                using (NetworkConnection newself = new NetworkConnection(tbSrcFolder.Text, m_Project.SourceCredentials))
                 {
                     // Capture Volume Shadow Snapshot if applicable...
                     SourceRoot = tbSrcFolder.Text;
@@ -671,17 +667,23 @@ namespace ZippyBackup.User_Interface
 
         private void cbExcludeSize_CheckedChanged(object sender, EventArgs e)
         {
+            ZippyForm.LogWriteLine(LogLevel.HeavyDebug, "cbExcludeSize_CheckedChanged");
+
             tbExcludeSize.Enabled = cbExcludeSize.Checked;
         }
 
         private void rbNoPassword_CheckedChanged(object sender, EventArgs e)
         {
+            ZippyForm.LogWriteLine(LogLevel.HeavyDebug, "rbNoPassword_CheckedChanged");
+
             rbAES.Checked = !rbNoPassword.Checked;
             tbPassword.Enabled = rbAES.Checked;
         }
 
         private void rbAES_CheckedChanged(object sender, EventArgs e)
         {
+            ZippyForm.LogWriteLine(LogLevel.HeavyDebug, "rbAES_CheckedChanged");
+
             rbNoPassword.Checked = !rbAES.Checked;
             tbPassword.Enabled = rbAES.Checked;
         }
@@ -706,7 +708,7 @@ namespace ZippyBackup.User_Interface
 
         private void cbUseVSS_CheckedChanged(object sender, EventArgs e)
         {
-
+            ZippyForm.LogWriteLine(LogLevel.HeavyDebug, "cbUseVSS_CheckedChanged");
         }
 
         private void btnManageSourceCredentials_Click(object sender, EventArgs e)

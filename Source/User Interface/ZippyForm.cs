@@ -53,7 +53,14 @@ namespace ZippyBackup.User_Interface
                     if (Splash != null) Splash.Status = "Loading Backup Project '" + bp.Name + "'...";
 
                     bp.AfterXmlLoad();
-                    bp.Refresh();
+                    try
+                    {
+                        bp.Refresh();
+                    }
+                    catch (Exception)
+                    {
+                        // If we can't load one of the projects, continue anyway and it will get flagged in red... I think.
+                    }
                 }
 
                 if (Splash != null) Splash.Status = "Almost done loading configuration...";

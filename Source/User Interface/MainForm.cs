@@ -163,7 +163,7 @@ namespace ZippyBackup.User_Interface
 
         #region "Initialization"
 
-        // public BackupSearch Searcher;
+        // public BackupSearch Searcher;        
 
         public MainForm(bool TrayStart)
         {

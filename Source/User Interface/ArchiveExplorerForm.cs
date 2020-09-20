@@ -48,7 +48,7 @@ namespace ZippyBackup.User_Interface
 
             ArchiveTree.ImageList = IconList;
 
-            using (Impersonator newself = new Impersonator(Project.BackupCredentials))
+            using (NetworkConnection newself = new NetworkConnection(Project.CompleteBackupFolder, Project.BackupCredentials))
                 Manifest = Archive.LoadArchiveManifest(Project, true);
 
             TreeNode Root = new TreeNode(Archive.ToString());

@@ -41,7 +41,7 @@ namespace ZippyBackup.IO
 
     public class PendingAlphaleonisFileStream : System.IO.Stream
     {
-        string FullName;
+        protected string FullName;
 
         private System.IO.FileStream m_Underlying;
         protected System.IO.FileStream Underlying
@@ -209,8 +209,8 @@ namespace ZippyBackup.IO
         private RingBuffer m_WriteBuffer;
         StoredNetworkCredentials m_Credentials;
 
-        public ZippyFileStream(string FullName, StoredNetworkCredentials Credentials)
-            : base(FullName)
+        public ZippyFileStream(string FullName_, StoredNetworkCredentials Credentials)
+            : base(FullName_)
         {
             m_Credentials = Credentials;
         }
@@ -219,14 +219,14 @@ namespace ZippyBackup.IO
         {
             m_ReadBuffer = new RingBuffer(BufferSize);
             m_WriteBuffer = new RingBuffer(BufferSize);
-            // Note that the Impersonator class (part of ZippyBackup), will just "pass-through" if m_Credentials.Provided is false.
-            using (Impersonator im = new Impersonator(m_Credentials)) base.Open();
+            // Note that the NetworkConnection class (part of ZippyBackup), will just "pass-through" if m_Credentials.Provided is false.
+            using (NetworkConnection im = new NetworkConnection(FullName, m_Credentials)) base.Open();
         }
 
         public override void Close()
         {
             Flush();
-            using (Impersonator im = new Impersonator(m_Credentials)) base.Close();
+            using (NetworkConnection im = new NetworkConnection(FullName, m_Credentials)) base.Close();
             if (m_ReadBuffer != null) { m_ReadBuffer.Dispose(); m_ReadBuffer = null; }
             if (m_WriteBuffer != null) { m_WriteBuffer.Dispose(); m_WriteBuffer = null; }            
         }
@@ -246,7 +246,7 @@ namespace ZippyBackup.IO
             if (m_ReadBuffer != null && m_ReadBuffer.Length > 0) m_ReadBuffer.Clear();
             if (m_WriteBuffer != null && m_WriteBuffer.Length > 0)
             {
-                using (Impersonator im = new Impersonator(m_Credentials))
+                using (NetworkConnection im = new NetworkConnection(FullName, m_Credentials))
                 {
                     byte[] tmp = new byte[m_WriteBuffer.Length];
                     base.Write(tmp, 0, tmp.Length);
@@ -282,7 +282,7 @@ namespace ZippyBackup.IO
         {
             get {
                 long BaseLength;
-                using (Impersonator im = new Impersonator(m_Credentials)) { BaseLength = base.Length; }
+                using (NetworkConnection im = new NetworkConnection(FullName, m_Credentials)) { BaseLength = base.Length; }
                 if (m_WriteBuffer.Length == 0) return BaseLength;
                 long FromEnd = BaseLength - base.Position;
 
@@ -317,7 +317,7 @@ namespace ZippyBackup.IO
 
             if (count == 0) return AlreadyRead;
 
-            using (Impersonator im = new Impersonator(m_Credentials))
+            using (NetworkConnection im = new NetworkConnection(FullName, m_Credentials))
             {
                 if (count >= m_ReadBuffer.CapacityAvailable) return Underlying.Read(buffer, offset, count) + AlreadyRead;
 
@@ -372,7 +372,7 @@ namespace ZippyBackup.IO
                 return;
             }
 
-            using (Impersonator im = new Impersonator(m_Credentials))
+            using (NetworkConnection im = new NetworkConnection(FullName, m_Credentials))
             {
                 byte[] tmp = new byte[m_WriteBuffer.Length];
                 m_WriteBuffer.Dequeue(tmp, 0, tmp.Length);

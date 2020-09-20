@@ -288,10 +288,10 @@ namespace ZippyBackup
 
                 ArchiveSize = 0;
 
-                using (Impersonator newself = new Impersonator(Project.SourceCredentials))
+                using (NetworkConnection newself = new NetworkConnection(Project.SourceFolder, Project.SourceCredentials))
                     if (!Directory.Exists(Project.SourceFolder))
-                        throw new DirectoryNotFoundException("Source directory '" + Project.SourceFolder + "' does not exist or is offline.");
-                using (Impersonator newself = new Impersonator(Project.BackupCredentials))
+                        throw new DirectoryNotFoundException("Source directory '" + Project.SourceFolder + "' does not exist or is offline.");                
+                using (NetworkConnection newself = new NetworkConnection(Project.CompleteBackupFolder, Project.BackupCredentials))
                     if (!Directory.Exists(Project.CompleteBackupFolder))
                         throw new DirectoryNotFoundException("Backup directory '" + Project.CompleteBackupFolder + "' does not exist or is offline.");
 
@@ -316,7 +316,7 @@ namespace ZippyBackup
                     try
                     {
                         string Volume = new DirectoryInfo(Project.SourceFolder).Root.FullName;
-                        using (Impersonator newself = new Impersonator(Project.SourceCredentials)) // Actually, needs to be LocalSystem in a Service.
+                        using (NetworkConnection newself = new NetworkConnection(Project.SourceFolder, Project.SourceCredentials))  // Actually, needs to be LocalSystem in a Service.
                         {
                             ZippyForm.LogWriteLine(LogLevel.MediumDebug, "Initializing Volume Shadow Service (VSS) Interface...");
                             Snapshot = new ShadowVolume(Volume);
@@ -402,7 +402,7 @@ namespace ZippyBackup
                             zip.Encryption = EncryptionAlgorithm.WinZipAes256;
                         }
 
-                        using (Impersonator newself = new Impersonator(Project.SourceCredentials))
+                        using (NetworkConnection newself = new NetworkConnection(Project.SourceFolder, Project.SourceCredentials))
                         {
                             Continuation.StartPass(SourceRoot);
                             RunFolder(zip, Manifest.ArchiveRoot, new DirectoryInfo(SourceRoot), null, ref Continuation);
@@ -445,7 +445,7 @@ namespace ZippyBackup
                                     zip.ZipError += new EventHandler<ZipErrorEventArgs>(OnZipError);
                                     zip.SaveProgress += new EventHandler<SaveProgressEventArgs>(OnZipSaveProgress);
                                     zip.UseZip64WhenSaving = Zip64Option.AsNecessary;
-                                    using (Impersonator newself = new Impersonator(Project.BackupCredentials))
+                                    using (NetworkConnection newself = new NetworkConnection(Project.CompleteBackupFolder, Project.BackupCredentials))
                                         zip.Save(Project.CompleteBackupFolder + "\\" + ArchiveName.ToString());
                                     if (ZipError != null) throw ZipError;
                                     Project.OnNewBackup(ArchiveName);
@@ -470,7 +470,7 @@ namespace ZippyBackup
                     }
 
                     // Update Backup Status file.                    
-                    using (Impersonator newself = new Impersonator(Project.BackupCredentials))
+                    using (NetworkConnection newself = new NetworkConnection(Project.CompleteBackupFolder, Project.BackupCredentials))
                     {
                         string BackupStatusFile = Project.CompleteBackupFolder + "\\Backup_Status.xml";
                         BackupStatus bs = new BackupStatus();
@@ -537,7 +537,7 @@ namespace ZippyBackup
                     Manifest PrevManifest;
                     try
                     {
-                        using (Impersonator newself = new Impersonator(Project.BackupCredentials))
+                        using (NetworkConnection newself = new NetworkConnection(Project.CompleteBackupFolder, Project.BackupCredentials))
                         {
                             // Locate latest backup (either complete or incremental.)
                             lock (Project.ArchiveFileList) LatestBackup = Project.ArchiveFileList.FindMostRecent();
@@ -573,8 +573,8 @@ namespace ZippyBackup
                                 zip.Encryption = EncryptionAlgorithm.WinZipAes256;
                             }
 
-                            int ChangedFiles;
-                            using (Impersonator newself = new Impersonator(Project.SourceCredentials))
+                            int ChangedFiles;                            
+                            using (NetworkConnection newself = new NetworkConnection(Project.SourceFolder, Project.SourceCredentials))
                             {
                                 Continuation.StartPass(SourceRoot);
                                 ChangedFiles = RunFolder(zip, Manifest.ArchiveRoot, new DirectoryInfo(SourceRoot), PrevManifest.ArchiveRoot,
@@ -622,7 +622,7 @@ namespace ZippyBackup
                                         zip.ZipError += new EventHandler<ZipErrorEventArgs>(OnZipError);
                                         zip.SaveProgress += new EventHandler<SaveProgressEventArgs>(OnZipSaveProgress);
                                         zip.UseZip64WhenSaving = Zip64Option.AsNecessary;
-                                        using (Impersonator newself = new Impersonator(Project.BackupCredentials))
+                                        using (NetworkConnection newself = new NetworkConnection(Project.CompleteBackupFolder, Project.BackupCredentials))
                                             zip.Save(Project.CompleteBackupFolder + "\\" + ArchiveName.ToString());
                                         if (ZipError != null) throw ZipError;
                                     }
@@ -646,7 +646,7 @@ namespace ZippyBackup
                             }
 
                             // Update Backup Status file.                    
-                            using (Impersonator newself = new Impersonator(Project.BackupCredentials))
+                            using (NetworkConnection newself = new NetworkConnection(Project.CompleteBackupFolder, Project.BackupCredentials))
                             {
                                 string BackupStatusFile = Project.CompleteBackupFolder + "\\Backup_Status.xml";
                                 BackupStatus bs = new BackupStatus();
