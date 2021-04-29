@@ -301,7 +301,15 @@ namespace ZippyBackup
                 FileInfo[] FileList = new DirectoryInfo(CompleteBackupFolder).GetFiles("Backup_Status.xml");
                 if (FileList.Length > 0)
                 {
-                    BackupStatus Status = BackupStatus.Load(FileList[0].FullName);
+                    BackupStatus Status = null;
+                    try
+                    {
+                        Status = BackupStatus.Load(FileList[0].FullName);
+                    }
+                    catch (Exception exc)
+                    {
+                        MessageBox.Show("Unable to load backup status file (see error details below).  This file helps ZippyBackup keep track of some things, but we can also figure it out from scratch and make a new backup status file when you perform your next backup.  Click OK and ZippyBackup will proceed without it.  Your next backup may take longer than usual.\n\nDetailed error information: " + exc.Message);                        
+                    }
                     if (Status != null)
                     {
                         if (MostRecent != ArchiveFilename.MaxValue
@@ -576,7 +584,10 @@ namespace ZippyBackup
                     }
                     catch (Exception exc)
                     {
-                        if (Retry >= 10) throw exc;
+                        if (Retry >= 10)
+                        {
+                            throw new Exception("Unable to load backup status file: " + Path + "\n\n" + exc.Message, exc);
+                        }
                         System.Threading.Thread.Sleep(10);
                     }
                 }
