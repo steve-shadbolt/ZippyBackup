@@ -246,7 +246,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(232, 65);
             this.label2.TabIndex = 0;
-            this.label2.Text = "ZippyBackup \r\nCopyright (C) 2012-2016 by Wiley Black\r\n\r\n\r\nZippyBackup depends on " +
+            this.label2.Text = "ZippyBackup \r\nCopyright (C) 2012-2016 by Wiley Black\r\nModified 2023 by Steve Shadbolt\r\n\r\nZippyBackup depends on " +
     "the following libraries.";
             // 
             // tabManage
@@ -587,7 +587,7 @@
             this.btnVerify.Text = "Verify All";
             this.btnVerify.UseVisualStyleBackColor = true;
             this.btnVerify.Click += new System.EventHandler(this.btnVerify_Click);
-            // 
+			// 
             // btnRestore
             // 
             this.btnRestore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

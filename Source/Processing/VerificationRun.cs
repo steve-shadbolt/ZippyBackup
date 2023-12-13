@@ -467,6 +467,7 @@ namespace ZippyBackup
                     try
                     {
                         string PathInArchive = FileM.PathInArchive.Replace('\\', '/').Replace('’', '\'');
+						ZippyForm.LogWriteLine(LogLevel.MediumDebug, "Looking for '" + PathInArchive + "' in zip array");
                         ze = zip[PathInArchive];
                         if (ze == null) throw new FileNotFoundException();
                     }

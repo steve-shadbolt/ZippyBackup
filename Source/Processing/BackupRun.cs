@@ -1301,6 +1301,8 @@ namespace ZippyBackup
                         if (Excluded.Equals(RelativePath, StringComparison.OrdinalIgnoreCase)) { ExcludedFile = true; break; }
                     foreach (string Excluded in User_Interface.ZippyForm.MainList.ExcludeExtensions)
                         if (Excluded.Equals(fi.Extension, StringComparison.OrdinalIgnoreCase)) { ExcludedFile = true; break; }
+					if (fi.Name.StartsWith("NTUSER")) { ExcludedFile = true; break; }
+
                     if (ExcludedFile) continue;                         // Action C2.                    
 
                     ZippyForm.LogWriteLine(LogLevel.HeavyDebug, "\t\tNo file exclusions.");
